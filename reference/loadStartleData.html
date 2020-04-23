@@ -129,8 +129,9 @@
     </div>
 
     <pre class="usage"><span class='fu'>loadStartleData</span>(
-  <span class='kw'>local_import</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>group_names</span>,
+  <span class='kw'>auto_import</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>data</span>,
+  <span class='no'>mass</span>,
   <span class='no'>addhead</span>,
   <span class='no'>addtail</span>,
   <span class='no'>metadata</span>,
@@ -142,12 +143,16 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>local_import</th>
+      <th>auto_import</th>
       <td><p>An argument with default value TRUE. If set to TRUE it will load all .pasta files from the working directory and merge them apropriately. If set to FALSE, a user must specify group_names.</p></td>
     </tr>
     <tr>
-      <th>group_names</th>
-      <td><p>An argument used only if local_import = FALSE. A vector of strings with names of .pasta files pertaining to startle data.</p></td>
+      <th>data</th>
+      <td><p>An argument used only if auto_import = FALSE. A list. A list containing data frames with data from .pasta files.</p></td>
+    </tr>
+    <tr>
+      <th>mass</th>
+      <td><p>An argument used only if auto_import = FALSE. A dataframe, in first column are names of animals, second their mass. Names in first column must correspond to the names of the elements in list used as an data argument.</p></td>
     </tr>
     <tr>
       <th>addhead</th>
@@ -176,11 +181,15 @@
     <p>A dataframe with all startle data</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>loadStartleData</span>(<span class='no'>df</span>, <span class='kw'>addhead</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>addtail</span> <span class='kw'>=</span> <span class='fl'>0.2</span>)
-<span class='co'># OR</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>loadStartleData</span>(<span class='kw'>local_import</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>group_names</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ctr 1"</span>, <span class='st'>"ctr 2"</span>), <span class='kw'>addhead</span><span class='kw'>=</span><span class='fl'>0.1</span>, <span class='kw'>addtail</span><span class='kw'>=</span><span class='fl'>1</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Creating random experiment data</span>
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"CTR 1"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>210881</span>, <span class='kw'>by</span><span class='kw'>=</span><span class='fl'>12</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>17574</span>, <span class='kw'>min</span><span class='kw'>=</span>-<span class='fl'>30</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>30</span>)),
+             <span class='st'>"CTR 2"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>210881</span>, <span class='kw'>by</span><span class='kw'>=</span><span class='fl'>12</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>17574</span>, <span class='kw'>min</span><span class='kw'>=</span>-<span class='fl'>30</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>30</span>)),
+             <span class='st'>"EXP 1"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>210881</span>, <span class='kw'>by</span><span class='kw'>=</span><span class='fl'>12</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>17574</span>, <span class='kw'>min</span><span class='kw'>=</span>-<span class='fl'>30</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>30</span>)),
+             <span class='st'>"EXP 2"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>210881</span>, <span class='kw'>by</span><span class='kw'>=</span><span class='fl'>12</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>17574</span>, <span class='kw'>min</span><span class='kw'>=</span>-<span class='fl'>30</span>, <span class='kw'>max</span><span class='kw'>=</span><span class='fl'>30</span>)))
+<span class='no'>mass</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='st'>"group"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"CTR 1"</span>, <span class='st'>"CTR 2"</span>, <span class='st'>"EXP 1"</span>, <span class='st'>"EXP 2"</span>), <span class='st'>"mass"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>300</span>, <span class='fl'>350</span>, <span class='fl'>280</span>, <span class='fl'>330</span>))
+
+<span class='co'># Running an example of loadStartleData with auto_import set to FALSE</span>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>loadStartleData</span>(<span class='kw'>auto_import</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='kw'>mass</span> <span class='kw'>=</span> <span class='no'>mass</span>, <span class='kw'>addhead</span><span class='kw'>=</span><span class='fl'>0.1</span>, <span class='kw'>addtail</span><span class='kw'>=</span><span class='fl'>1</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
