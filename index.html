@@ -20,13 +20,13 @@
 <script src="pkgdown.js"></script><meta property="og:title" content="Processing Acoustic Startle Experimental Data">
 <meta property="og:description" content="Used for processing data obtained from behaviour experiments studying
     acoustic startle response, a reflex to a loud sound, modulated by several 
-    brain regions. The input data is generated with a DIY device made from a
-    kitchen scale, defined in the research literature as PASTA (Platform for 
-    Acoustic STArtle), that measures the twitch of an animal standing on the 
-    device and records it as time-series data. The function of this package is 
-    to import all data, process it in accordance with default or custom metadata
-    describing the experiment protocol, calculate measurements and visualize the 
-    results.">
+    brain regions. The input data is generated with PASTA (Platform for Acoustic 
+    STArtle), a DIY device made from a kitchen scale that measures the twitch of 
+    an animal standing on the device and records it as time-series data. The 
+    function of this package is to import all data, process it in accordance 
+    with default or custom metadata describing the experiment protocol, calculate 
+    measurements and visualize the results. The PASTA solution and this package
+    are described in Virag et al. (2020) &lt;doi:10.1101/2020.04.10.035766&gt;.">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -102,8 +102,10 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>Install ratPASTA from Github:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu">install_github</span>(<span class="st">"ikodvanj/ratPASTA"</span>)</pre></div>
+<p>Install ratPASTA from CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ratPASTA"</span>)</pre></div>
+<p>…or install ratPASTA from Github:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu">install_github</span>(<span class="st">"ikodvanj/ratPASTA"</span>)</pre></div>
 </div>
 <div id="features" class="section level2">
 <h2 class="hasAnchor">
@@ -135,6 +137,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=ratPASTA">https://​cloud.r-project.org/​package=ratPASTA</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/ikodvanj/ratPASTA/">https://​github.com/​ikodvanj/​ratPASTA/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/ikodvanj/ratPASTA/issues">https://​github.com/​ikodvanj/​ratPASTA/​issues</a>
@@ -168,6 +172,7 @@
 <li><a href="https://travis-ci.com/ikodvanj/ratPASTA"><img src="https://travis-ci.com/ikodvanj/ratPASTA.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/ikodvanj/ratPASTA"><img src="https://ci.appveyor.com/api/projects/status/github/ikodvanj/ratPASTA?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://codecov.io/gh/ikodvanj/ratPASTA?branch=master"><img src="https://codecov.io/gh/ikodvanj/ratPASTA/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://CRAN.R-project.org/package=ratPASTA"><img src="https://www.r-pkg.org/badges/version/ratPASTA" alt="CRAN status"></a></li>
 </ul>
 </div>
 </div>
