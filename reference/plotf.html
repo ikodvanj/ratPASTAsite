@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Startle Plot — startlePlot • ratPASTA</title>
+<title>Plot function — plotf • ratPASTA</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Startle Plot — startlePlot" />
-<meta property="og:description" content="Returns several types of plots, based on the type argument. Type 1 returns a dot plot portraying mean values during the pulse and between pulses for tested groups; type 2, returns a similar result as type 1, but as a boxplot; type 3 displays only values pertaining to pulse period; type 4 displays distribution of values as violin plots; type 5 is a time-series plot with all startle tries overlapped, color indicates whether prepulse was used; type 6 is a boxplot displaying ratio of values recorded during pulse and in between pulses." />
+<meta property="og:title" content="Plot function — plotf" />
+<meta property="og:description" content="Returns a line plot for each animal." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -134,52 +134,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Startle Plot</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ikodvanj/ratPASTA/blob/master/R/startle.r'><code>R/startle.r</code></a></small>
-    <div class="hidden name"><code>startlePlot.Rd</code></div>
+    <h1>Plot function</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ikodvanj/ratPASTA/blob/master/R/gripasta.r'><code>R/gripasta.r</code></a></small>
+    <div class="hidden name"><code>plotf.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns several types of plots, based on the type argument. Type 1 returns a dot plot portraying mean values during the pulse and between pulses for tested groups; type 2, returns a similar result as type 1, but as a boxplot; type 3 displays only values pertaining to pulse period; type 4 displays distribution of values as violin plots; type 5 is a time-series plot with all startle tries overlapped, color indicates whether prepulse was used; type 6 is a boxplot displaying ratio of values recorded during pulse and in between pulses.</p>
+    <p>Returns a line plot for each animal.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>startlePlot</span>(<span class='no'>df</span>, <span class='no'>type</span>, <span class='no'>filter_major_groups</span>, <span class='no'>yrange</span>, <span class='no'>n_col</span>)</pre>
+    <pre class="usage"><span class='fu'>plotf</span>(<span class='no'>df</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>A dataframe returned by loadStartleData function.</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>Obligatary argument. A number 1, 2 or 3 that specifies which plot will be returned. For more information see th vignette.</p></td>
-    </tr>
-    <tr>
-      <th>filter_major_groups</th>
-      <td><p>An optional argument, a vector of strings used for filtering the data and displaying only wished major groups on plots.</p></td>
-    </tr>
-    <tr>
-      <th>yrange</th>
-      <td><p>An optional argument used for zooming in. Should be defined as a vector with min and max y axis values (e.g. c(0,10) - y axis will have min value of 0 and max value of 10 )</p></td>
-    </tr>
-    <tr>
-      <th>n_col</th>
-      <td><p>An optional argument, defines number of graph columns.</p></td>
+      <td><p>raw griPASTA data</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns several types of plots based on type.</p>
+    <p>ggplot object</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Load example data</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>ratpasta_demo</span>
-
-<span class='co'># running examples</span>
-<span class='fu'>startlePlot</span>(<span class='no'>df</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='img'><img src='startlePlot-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>startlePlot</span>(<span class='no'>df</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='startlePlot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>startlePlot</span>(<span class='no'>df</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='img'><img src='startlePlot-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
